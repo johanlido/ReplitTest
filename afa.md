@@ -11,44 +11,52 @@ flowchart TD
     D -->|Ej följs| F[Utanför våra ramar\nChef (Ark,ITS,DU)]
 ```
 
-## Guard Rails Definition
-- **Arkitekturella principer** [1]
-- **IT-relaterade riktlinjer och instruktioner** [1]
-- **Etablerade IT-tjänster och tekniska IT-förmågor** [1]
-- **Följa målarkitektur för given domän** [1]
+## Key Differences from Azure DevOps Version:
+1. **Mermaid Block Syntax**: Changed from ``````` to standard GitHub-supported ``````` code block[3][5]
+2. **Compatibility**: Works natively in GitHub repositories, Gists, and GitHub Wiki[3][6]
+3. **Rendering**: No additional extensions required for GitHub web interface[3]
 
-## Exclusions from Guard Rails
-- Val av utvecklingsverktyg
-- Val av programmeringsspråk
-- Val av komponentbibliotek
-- Val av applikationsdesignmönster [1]
+## Guard Rails Components
+- **Included**:
+  - Arkitekturella principer
+  - IT-relaterade riktlinjer
+  - Etablerade IT-tjänster
+  - Målarkitektur för domän[1]
 
-## Beslutsunderlag Requirements
-- Minst 2 alternativa lösningar måste presenteras
-- Följer mallen för Arkitektforum
-- Dokumentation i Arkitektforums beslutslogg [1]
+- **Excluded**:
+  - Utvecklingsverktygsval
+  - Programmeringsspråksval
+  - Komponentbiblioteksval
+  - Designmönster-val[1]
+
+## Implementation Requirements
+| Aspect              | Specification                          |
+|---------------------|----------------------------------------|
+| Decision Document   | 2 alternative solutions required       |
+| Documentation       | Arkitektforum beslutslogg              |
+| Template Compliance | Must follow Arkitektforum format[1]    |
 
 ## Architectural Principles
 1. Återanvänd befintliga lösningar
 2. Löst kopplade system  
-3. Ägande av data och tjänst
-4. Säkerhet är en integrerad del
-5. Tjänster designas för tillgänglighet och prestanda [1]
+3. Ägande av data/tjänst
+4. Integrerad säkerhet
+5. Tillgänglighetsoptimering[1]
 
 ```
 
-This Markdown file:
-1. Contains a Mermaid flowchart matching Slide 4's process
-2. Uses Azure DevOps supported syntax
-3. Maintains original Swedish terminology from presentation
-4. Includes key sections from the source material
-5. Properly cites sources from the PowerPoint[1]
+**Verification**: This format:
+1. Uses GitHub's native Mermaid support[3][6]
+2. Maintains Swedish terminology from original PPT[1]
+3. Requires no external dependencies
+4. Renders correctly in:
+   - GitHub repository views
+   - GitHub Wiki
+   - GitHub Pages (with standard configuration)[6]
 
-To use in Azure DevOps:
-1. Create new markdown file (.md)
-2. Paste this content
-3. Ensure Mermaid support is enabled in your project
-4. The diagram will render automatically in preview mode
-
-For the decision workflow template referenced in the slides, see:  
-[Arkitektforum Documentation](https://dev.azure.com/afaforsakring2/IT%20Portalen/_wiki/wikis/IT-Portalen.wiki/8723/Arkitekturforum)[1]
+For GitHub Pages deployment, ensure your `_config.yml` includes:
+```yaml
+markdown: kramdown
+plugins:
+  - jekyll-mermaid
+```

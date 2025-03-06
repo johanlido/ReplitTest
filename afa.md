@@ -2,14 +2,72 @@
 
 ## Process Flow (When Guard Rails Are Not Followed)
 
+```mermaid
+sequenceDiagram
+    participant Developer
+    participant Architectural Guard-Rail Process
+    participant Architects Group
+    participant Managers Group
+    participant IT Management
+
+    Developer->>Architectural Guard-Rail Process: Submit code changes
+    alt Complies with principles
+        Architectural Guard-Rail Process->>Developer: Automatic approval
+    else Non-compliant
+        Architectural Guard-Rail Process->>Developer: Request decision basis document
+        Developer->>Architects Group: Submit decision document
+        Architects Group->>Architects Group: Review document
+        alt Approved
+            Architects Group->>Developer: Approval with conditions
+        else No mandate
+            Architects Group->>Managers Group: Escalate document
+            Managers Group->>Managers Group: Review document
+            alt Approved
+                Managers Group->>Developer: Approval with conditions
+            else No mandate
+                Managers Group->>IT Management: Escalate document
+                IT Management->>IT Management: Final review
+                alt Approved
+                    IT Management->>Developer: Final approval
+                else Rejected
+                    IT Management->>Developer: Mandatory compliance required
+                end
+            end
+        end
+    end
+    loop Until resolved
+        Developer->>Architectural Guard-Rail Process: Resubmit updated implementation
+    end
 ```
+
+```mermaid
 flowchart TD
     A[Budget] --> B[Behov & Krav]
     B --> C[EPIC/Feature]
-    C --> D{Guard Rails\n(Taktisk)}
-    D -->|Följs| E[Chef (Ark,ITS,IA)]
-    D -->|Ej följs| F[Utanför våra ramar\nChef (Ark,ITS,DU)]
+    C --> D{Guard Rails Taktisk}
+    D -->|Foljs| E[Chef Ark,ITS,IA]
+    D -->|Ej följs| F[Utanför våra ramarChef Ark,ITS,DU]
 ```
+
+```mermaid
+flowchart TD
+    C("fa:fa-book-open Learn More") --> n1[" "] & D{"Use the editor"} & n2["Many shapes"]
+    D -- Build and Design --> E("fa:fa-shapes Visual Editor")
+    E --> F("fa:fa-chevron-up Add node in toolbar")
+    D -- Use AI --> G("fa:fa-comment-dots AI chat")
+    G --> H("fa:fa-arrow-left Open AI in side menu")
+    D -- Mermaid js --> I("fa:fa-code Text")
+    I --> J("fa:fa-arrow-left Type Mermaid syntax")
+    n3["Behov och Krav"] --> n4["Taktisk Triad"]
+
+    n1@{ icon: "fa:gem", pos: "b", h: 24}
+    n2@{ shape: delay}
+    n4@{ shape: tri}
+    style E color:#FFFFFF, fill:#AA00FF, stroke:#AA00FF
+    style G color:#FFFFFF, stroke:#00C853, fill:#00C853
+    style I color:#FFFFFF, stroke:#2962FF, fill:#2962FF
+```
+
 
 ## Key Differences from Azure DevOps Version:
 1. **Mermaid Block Syntax**: Changed from ``````` to standard GitHub-supported ``````` code block[3][5]
